@@ -1,0 +1,63 @@
+bin 1
+blocked, red target, left, fast
+.{1}
+
+bin 2
+blocked, red target, right, fast
+.{3}
+
+bin 3
+blocked, blue target, right, fast
+.{5}
+
+bin 4
+blocked, blue target, left, fast
+.{7}
+
+bin 5
+blocked, red target, left, slow
+.{9}
+
+bin 6
+blocked, red target, right, slow
+.{11}
+
+bin 7
+blocked, blue target, right, slow
+.{13}
+
+bin 8
+blocked, blue target, left, slow
+.{15}
+
+bin 9
+mixed, red target, left, fast
+.{2}
+
+bin 10
+mixed, red target, right, fast
+.{4}
+
+bin 11
+mixed, blue target, right, fast
+.{6}
+
+bin 12
+mixed, blue target, left, fast
+.{8}
+
+bin 13
+mixed, red target, left, slow
+.{10}
+
+bin 14
+mixed, red target, right, slow
+.{12}
+
+bin 15
+mixed, blue target, right, slow
+.{14}
+
+bin 16
+mixed, blue target, left, slow
+.{16}

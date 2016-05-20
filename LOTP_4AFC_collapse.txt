@@ -1,0 +1,8 @@
+nbin1 = (BIN1+BIN4) label = left target, blocked, fast, averaged across red/blue 
+nbin2 = (BIN2+BIN3) label = right target, blocked, fast, averaged across red/blue
+nbin3 = (BIN5+BIN8) label = left target, blocked, slow, averaged across red/blue 
+nbin4 = (BIN6+BIN7) label = right target, mixed, slow, averaged across red/blue  
+nbin5 = (BIN9+BIN12) label = left target, mixed, fast, averaged across red/blue  
+nbin6 = (BIN10+BIN11) label = right target, mixed, fast, averaged across red/blue
+nbin7 = (BIN13+BIN16) label = left target, mixed, slow, averaged across red/blue 
+nbin8 = (BIN14+BIN15) label = right target, mixed, slow, averaged across red/blue
