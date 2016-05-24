@@ -29,6 +29,6 @@ nch28 = ch28 - ( (ch11 + ch24)/2 ) Label Mastoid R
 nch29 = ch29 - ( (ch11 + ch24)/2 ) Label Mastoid L
 nch30 = ch30 - ( (ch11 + ch24)/2 ) Label HEOG R   
 nch31 = ch31 - ( (ch11 + ch24)/2 ) Label HEOG L   
-nch32 = ch32 - ( (ch11 + ch24)/2 ) Label VEOG L   
+nch32 = ch32 - ( (ch11 + ch24)/2 ) Label VEOG R   
 nch33 = (ch30 - ch31) Label HEOG (uncorr)         
 nch34 = (ch32 - ch17) Label VEOG (uncorr)         
