@@ -3,10 +3,13 @@
 
 % importing file parameters:
 
+clear all
+close all
+
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
 ANALYSIS_DIR = ('/Users/kfranko/Desktop/ERP_analysis_scripts/');
-sub_data_folder = 'S03';
-sub_num = 'S3';
+sub_data_folder = 'S01';
+sub_num = 'S1';
 
 data_directory = fullfile(ERP_data_folder, sub_data_folder);
 
@@ -14,10 +17,7 @@ file_name_template = '_LOTP_4AFC_ERP2_';
 
 file_name = [sub_num file_name_template];
 
-
-[data_directory, '/', sub_num, file_name_template, 'merged_data_test.set']
-
-
+check_erps = 1;
 
 % load the subject's data:
 
@@ -121,14 +121,14 @@ eeglab redraw;
 % moving window, channels 1:32, 100 threshold, windowsize = 200, stepsize =
 % 100
 EEG  = pop_artmwppth( EEG , 'Channel',  1:32, 'Flag',  1, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  200, 'Windowstep',  100 ); % GUI: 23-May-2016 16:59:21
-EEG.setname='S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW';
+EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW'];
 
 % VEOG artifact detection; moving window. test window = [-200 795.9];
 % threshold = 80 uV; window width = 200 ms; window step = 50ms; channel
 % 34
 
-EEG  = pop_artmwppth( EEG , 'Channel',  34, 'Flag',  1, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  200, 'Windowstep',  50 ); %for version 2.0.0.57
-EEG.setname='S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG';
+EEG  = pop_artmwppth( EEG , 'Channel',  34, 'Flag',  2, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  200, 'Windowstep',  50 ); %for version 2.0.0.57
+EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG'];
 
 
 % Artifact detection. Step-like artifacts in the bipolar
@@ -136,29 +136,58 @@ EEG.setname='S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEO
 % Threshold = 30 uV; Window width = 400 ms;
 % Window step = 10 ms; Flags to be activated = 1 & 3
 
-EEG  = pop_artstep( EEG , 'Channel',  33, 'Flag',  1, 'Threshold',  30, 'Twindow', [ -200 698], 'Windowsize',  400, 'Windowstep',  10 );
-EEG.setname='S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG';
+EEG  = pop_artstep( EEG , 'Channel',  33, 'Flag',  3, 'Threshold',  30, 'Twindow', [ -200 698], 'Windowsize',  400, 'Windowstep',  10 );
+EEG.setname= [sub_num 'S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG'];
+
+
+% save EEG artifact rejection summary:
+
+EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_template,'artifact_rejection_summary.txt']);
 
 
 
 % averaging:
 %Create ERP
-ERP = pop_averager( ALLEEG , 'Criterion', 'good', 'DSindex',  6, 'ExcludeBoundary', 'on' );
-ERP = pop_savemyerp( ERP, 'erpname', [sid '_DP_erp'], 'filename', [DIR SUB{i} '/' sid '_DP_erp.erp']);
-close all
 
-ERP = pop_averager( ALLEEG , 'Criterion', 'good', 'DSindex',14, 'ExcludeBoundary', 'on', 'SEM', 'on' );% GUI: 23-May-2016 17:52:05
+erpname = [data_directory,'/',sub_num,file_name_template,'ERP'];
+ERP = pop_averager( ALLEEG , 'Criterion', 'good', 'DSindex',  12, 'ExcludeBoundary', 'on', 'SEM', 'on');
+ERP = pop_savemyerp( ERP, 'erpname', erpname, 'filename', [data_directory,'/',sub_num,file_name_template,'ERP.erp']);
 
 
 
 % bin operations:
 
 
-ERP = pop_binoperator( ERP, {'nbin1 = (BIN1+BIN4+BIN17+BIN20+BIN33+BIN36+BIN49+BIN52) label = left target, blocked, fast, averaged across red/blue, A/B/C/D','nbin2 = (BIN2+BIN3+BIN18+BIN19+BIN34+BIN35+BIN50+BIN51) label = right target, blocked, fast, averaged across red/blue, A/B/C/D','nbin3 = (BIN5+BIN8+BIN21+BIN24+BIN37+BIN40+BIN53+BIN56) label = left target, blocked, slow, averaged across red/blue, A/B/C/D','nbin4 = (BIN6+BIN7+BIN22+BIN23+BIN38+BIN39+BIN54+BIN55) label = right target, blocked, slow, averaged across red/blue, A/B/C/D'});
-ERP = pop_savemyerp(ERP, 'erpname', 'S3_4AFC_ERP2_erp_collapsed', 'filename', 'S3_4AFC_ERP2_erp_collapsed.erp', 'filepath', '/Users/kfranko/Desktop/ERP_analysis_scripts', 'Warning', 'on');% GUI: 23-May-2016 18:57:55
+%ERP = pop_binoperator( ERP, {'nbin1 = (BIN1+BIN4+BIN17+BIN20+BIN33+BIN36+BIN49+BIN52) label = left target, blocked, fast, averaged across red/blue, A/B/C/D','nbin2 = (BIN2+BIN3+BIN18+BIN19+BIN34+BIN35+BIN50+BIN51) label = right target, blocked, fast, averaged across red/blue, A/B/C/D','nbin3 = (BIN5+BIN8+BIN21+BIN24+BIN37+BIN40+BIN53+BIN56) label = left target, blocked, slow, averaged across red/blue, A/B/C/D','nbin4 = (BIN6+BIN7+BIN22+BIN23+BIN38+BIN39+BIN54+BIN55) label = right target, blocked, slow, averaged across red/blue, A/B/C/D'});
+%ERP = pop_savemyerp(ERP, 'erpname', 'S3_4AFC_ERP2_erp_collapsed', 'filename', 'S3_4AFC_ERP2_erp_collapsed.erp', 'filepath', '/Users/kfranko/Desktop/ERP_analysis_scripts', 'Warning', 'on');% GUI: 23-May-2016 18:57:55
 
 
+ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'LOTP_4AFC_collapse.txt']);
+erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse.txt'];  % name for erpset menu
 
+
+% Now we will do bin operations using a set of equations
+% stored in the file 'fast_contra_ipsi_bin_operations.txt';
+
+ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'contra_ipsi_bin_operators.txt']);
+erpname = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff'];  % name for erpset menu
+fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff.erp'];
+pop_savemyerp(ERP, 'erpname', erpname, 'filename', fname_erp);
+
+fprintf('\n\n\n**** subject processed! ****\n\n\n');
+
+
+if check_erps == 1
+    % load erp:
+    ERP = pop_loaderp( 'filename', [sub_num '_LOTP_4AFC_ERP2_ERP_contra_ipsi_diff.erp'], 'filepath', data_directory);
+    % plot erp:
+    ERP = pop_ploterps( ERP, [ 1 2],  1:11 , 'AutoYlim', 'on', 'Axsize', [ 0.05 0.08], 'BinNum', 'on', 'Blc', 'pre', 'Box', [ 4 3], 'ChLabel',...
+        'on', 'FontSizeChan',  10, 'FontSizeLeg',  12, 'FontSizeTicks',  10, 'LegPos', 'bottom', 'Linespec', {'k-' , 'r-' }, 'LineWidth',  1, 'Maximize',...
+        'on', 'Position', [ 103.714 29.6429 106.857 31.9286], 'Style', 'Classic', 'Tag', 'ERP_figure', 'Transparency',  0, 'xscale',...
+        [ -200.0 698.0   -200:100:600 ], 'YDir', 'normal' );
+end
+    
+    
 
 
 

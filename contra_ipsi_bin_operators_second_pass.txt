@@ -1,0 +1,12 @@
+prepareContraIpsi                                              
+Lch = [ 1 3 4:2:8 9:11 13 12 14]                               
+Rch =  17:27                                                   
+#nbin1 = 0.5*bin1@Rch + 0.5*bin2@Lch label fast_blkd Contra
+#nbin2 = 0.5*bin1@Lch + 0.5*bin2@Rch label fast_blkd Ipsi  
+#nbin3 = 0.5*bin3@Rch + 0.5*bin4@Lch label slow_blkd Contra   
+#nbin4 = 0.5*bin3@Lch + 0.5*bin4@Rch label slow_blkd Ipsi     
+# For creating contra-minus-ipsi waveforms from the bins above,
+# run (only) the formulas described here below in a second call
+# of "ERP binoperator"  (remove the # symbol before run them)  
+bin5 = bin1 - bin2 label fast_blkd  Contra-Ipsi          
+bin6 = bin3 - bin4 label slow_blkd  Contra-Ipsi   
