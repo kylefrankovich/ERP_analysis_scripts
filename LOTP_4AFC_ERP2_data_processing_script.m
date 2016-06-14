@@ -8,8 +8,8 @@ close all
 
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
 ANALYSIS_DIR = ('/Users/kfranko/Desktop/ERP_analysis_scripts/');
-sub_data_folder = 'S01';
-sub_num = 'S1';
+sub_data_folder = 'S19';
+sub_num = 'S19';
 
 data_directory = fullfile(ERP_data_folder, sub_data_folder);
 
