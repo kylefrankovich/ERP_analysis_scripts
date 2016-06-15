@@ -1,0 +1,6 @@
+nbin1 = (BIN1+BIN4+BIN17+BIN20+BIN33+BIN36+BIN49+BIN52)/8 label = left target, blocked, fast, averaged across red/blue, A/B/C/D
+nbin2 = (BIN2+BIN3+BIN18+BIN19+BIN34+BIN35+BIN50+BIN51)/8 label = right target, blocked, fast, averaged across red/blue, A/B/C/D
+nbin3 = (BIN5+BIN8+BIN21+BIN24+BIN37+BIN40+BIN53+BIN56)/8 label = left target, blocked, slow, averaged across red/blue, A/B/C/D
+nbin4 = (BIN6+BIN7+BIN22+BIN23+BIN38+BIN39+BIN54+BIN55)/8 label = right target, blocked, slow, averaged across red/blue, A/B/C/D
+nbin5 = (BIN1+BIN4+BIN17+BIN20+BIN33+BIN36+BIN49+BIN52+BIN5+BIN8+BIN21+BIN24+BIN37+BIN40+BIN53+BIN56)/16 label = left target, blocked, fast and slow, averaged across red/blue, A/B/C/D
+nbin6 = (BIN2+BIN3+BIN18+BIN19+BIN34+BIN35+BIN50+BIN51+BIN6+BIN7+BIN22+BIN23+BIN38+BIN39+BIN54+BIN55)/16 label = right target, blocked, fast and slow, averaged across red/blue, A/B/C/D
