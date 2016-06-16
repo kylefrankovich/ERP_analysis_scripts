@@ -8,8 +8,13 @@ close all
 
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
 ANALYSIS_DIR = ('/Users/kfranko/Desktop/ERP_analysis_scripts/');
+<<<<<<< Updated upstream
 sub_data_folder = 'S19';
 sub_num = 'S19';
+=======
+sub_data_folder = 'S04';
+sub_num = 'S4';
+>>>>>>> Stashed changes
 
 data_directory = fullfile(ERP_data_folder, sub_data_folder);
 
@@ -112,8 +117,8 @@ EEG  = pop_basicfilter( EEG,  1:34 , 'Boundary', 'boundary', 'Cutoff',  30, 'Des
 
 % update the gui:
 
-[ALLEEG EEG CURRENTSET] = eeg_store(ALLEEG,EEG);
-eeglab redraw;
+% [ALLEEG EEG CURRENTSET] = eeg_store(ALLEEG,EEG);
+% eeglab redraw;
 
 
 % artifact rejection:
@@ -150,7 +155,7 @@ EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_te
 %Create ERP
 
 erpname = [data_directory,'/',sub_num,file_name_template,'ERP'];
-ERP = pop_averager( ALLEEG , 'Criterion', 'good', 'DSindex',  12, 'ExcludeBoundary', 'on', 'SEM', 'on');
+ERP = pop_averager( ALLEEG , 'Criterion', 'good', 'DSindex',  11, 'ExcludeBoundary', 'on', 'SEM', 'on');
 ERP = pop_savemyerp( ERP, 'erpname', erpname, 'filename', [data_directory,'/',sub_num,file_name_template,'ERP.erp']);
 
 
