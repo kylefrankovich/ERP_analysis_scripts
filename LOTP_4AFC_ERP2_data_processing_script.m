@@ -8,13 +8,12 @@ close all
 
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
 ANALYSIS_DIR = ('/Users/kfranko/Desktop/ERP_analysis_scripts/');
-<<<<<<< Updated upstream
-sub_data_folder = 'S19';
-sub_num = 'S19';
-=======
-sub_data_folder = 'S04';
-sub_num = 'S4';
->>>>>>> Stashed changes
+
+sub_data_folder = 'S18';
+sub_num = 'S18';
+
+% sub_data_folder = 'S04';
+% sub_num = 'S4';
 
 data_directory = fullfile(ERP_data_folder, sub_data_folder);
 
@@ -90,13 +89,13 @@ EEG = pop_eegchanoperator( EEG, [ANALYSIS_DIR 're_reference_P9P10.txt']);
 %
 
 %create event list
-EEG  = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'BoundaryNumeric', { -99 }, 'BoundaryString', { 'boundary' }, 'Eventlist', [data_directory,'/',sub_num,file_name_template,'eventlist.txt']);
+EEG  = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'BoundaryNumeric', { -99 }, 'BoundaryString', { 'boundary' }, 'Eventlist', [data_directory,'/',sub_num,file_name_template,'eventlist_blocked_mixed.txt']);
 [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 8, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist'], 'gui', 'off');
 
 
 
 % bin events
-EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
+EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_blocked_mixed_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins_blocked_mixed.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
 [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 9, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins'], 'gui', 'off');
 
 
@@ -147,7 +146,7 @@ EEG.setname= [sub_num 'S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_
 
 % save EEG artifact rejection summary:
 
-EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_template,'artifact_rejection_summary.txt']);
+EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_template,'artifact_rejection_summary_blocked_mixed.txt']);
 
 
 
@@ -156,7 +155,7 @@ EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_te
 
 erpname = [data_directory,'/',sub_num,file_name_template,'ERP'];
 ERP = pop_averager( ALLEEG , 'Criterion', 'good', 'DSindex',  11, 'ExcludeBoundary', 'on', 'SEM', 'on');
-ERP = pop_savemyerp( ERP, 'erpname', erpname, 'filename', [data_directory,'/',sub_num,file_name_template,'ERP.erp']);
+ERP = pop_savemyerp( ERP, 'erpname', erpname, 'filename', [data_directory,'/',sub_num,file_name_template,'ERP_blocked_mixed.erp']);
 
 
 
@@ -167,16 +166,16 @@ ERP = pop_savemyerp( ERP, 'erpname', erpname, 'filename', [data_directory,'/',su
 %ERP = pop_savemyerp(ERP, 'erpname', 'S3_4AFC_ERP2_erp_collapsed', 'filename', 'S3_4AFC_ERP2_erp_collapsed.erp', 'filepath', '/Users/kfranko/Desktop/ERP_analysis_scripts', 'Warning', 'on');% GUI: 23-May-2016 18:57:55
 
 
-ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'LOTP_4AFC_collapse.txt']);
-erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse.txt'];  % name for erpset menu
+ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'LOTP_4AFC_collapse_blocked_mixed.txt']);
+erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse_blocked_mixed.txt'];  % name for erpset menu
 
 
 % Now we will do bin operations using a set of equations
 % stored in the file 'fast_contra_ipsi_bin_operations.txt';
 
-ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'contra_ipsi_bin_operators.txt']);
-erpname = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff'];  % name for erpset menu
-fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff.erp'];
+ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'contra_ipsi_bin_operators_blocked_mixed.txt']);
+erpname = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed'];  % name for erpset menu
+fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed.erp'];
 pop_savemyerp(ERP, 'erpname', erpname, 'filename', fname_erp);
 
 fprintf('\n\n\n**** subject processed! ****\n\n\n');
@@ -184,7 +183,7 @@ fprintf('\n\n\n**** subject processed! ****\n\n\n');
 
 if check_erps == 1
     % load erp:
-    ERP = pop_loaderp( 'filename', [sub_num '_LOTP_4AFC_ERP2_ERP_contra_ipsi_diff.erp'], 'filepath', data_directory);
+    ERP = pop_loaderp( 'filename', [sub_num '_LOTP_4AFC_ERP2_ERP_contra_ipsi_diff_blocked_mixed.erp'], 'filepath', data_directory);
     % plot erp:
     ERP = pop_ploterps( ERP, [ 1 2],  1:11 , 'AutoYlim', 'on', 'Axsize', [ 0.05 0.08], 'BinNum', 'on', 'Blc', 'pre', 'Box', [ 4 3], 'ChLabel',...
         'on', 'FontSizeChan',  10, 'FontSizeLeg',  12, 'FontSizeTicks',  10, 'LegPos', 'bottom', 'Linespec', {'k-' , 'r-' }, 'LineWidth',  1, 'Maximize',...
