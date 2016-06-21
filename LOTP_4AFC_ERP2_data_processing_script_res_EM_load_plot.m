@@ -4,7 +4,10 @@ subject_list = {'S01','S03','S04','S05','S06','S07','S08','S09','S12','S13','S14
 
 numsubjects = length(subject_list); % number of subjects
 
-cur_sub = 15;
+% review subs: S06: 5; S07: 6; S09: 8; S12: 9; S16: 12; S18: 14;
+% 
+
+cur_sub = 14;
 sub_folder = fullfile(ERP_data_folder, subject_list(cur_sub), '/');
 
 fprintf('\n******\nProcessing subject %s\n******\n\n', subject_list{cur_sub});
