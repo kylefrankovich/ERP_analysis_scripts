@@ -140,7 +140,7 @@ EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_ar
 % Threshold = 30 uV; Window width = 400 ms;
 % Window step = 10 ms; Flags to be activated = 1 & 3
 
-EEG  = pop_artstep( EEG , 'Channel',  33, 'Flag',  3, 'Threshold',  30, 'Twindow', [ -200 698], 'Windowsize',  400, 'Windowstep',  10 );
+EEG  = pop_artstep( EEG , 'Channel',  33, 'Flag',  3, 'Threshold',  30, 'Twindow', [ -200 698], 'Windowsize',  200, 'Windowstep',  10 );
 EEG.setname= [sub_num 'S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG'];
 
 

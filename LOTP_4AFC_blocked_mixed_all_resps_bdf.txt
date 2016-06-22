@@ -1,0 +1,383 @@
+bin 1
+blocked, A, red target, left, fast
+.{101}{99}{1;2;3;4}
+
+bin 2
+blocked, A, red target, right, fast
+.{103}{99}{1;2;3;4}
+
+bin 3
+blocked, A, blue target, right, fast
+.{105}{99}{1;2;3;4}
+
+bin 4
+blocked, A, blue target, left, fast
+.{107}{99}{1;2;3;4}
+
+bin 5
+blocked, A, red target, left, slow
+.{109}{99}{1;2;3;4}
+
+bin 6
+blocked, A, red target, right, slow
+.{111}{99}{1;2;3;4}
+
+bin 7
+blocked, A, blue target, right, slow
+.{113}{99}{1;2;3;4}
+
+bin 8
+blocked, A, blue target, left, slow
+.{115}{99}{1;2;3;4}
+
+bin 9
+mixed, A, red target, left, fast, preceded by fast
+{t<700-900>99}.{102}{99}{1;2;3;4}
+
+bin 10
+mixed, A, red target, left, fast, preceded by slow
+{t<1800-2000>99}.{102}{99}{1;2;3;4}
+
+bin 11
+mixed, A, red target, right, fast, preceded by fast
+{t<700-900>99}.{104}{99}{1;2;3;4}
+
+bin 12
+mixed, A, red target, right, fast, preceded by slow
+{t<1800-2000>99}.{104}{99}{1;2;3;4}
+
+bin 13
+mixed, A, blue target, right, fast, preceded by fast
+{t<700-900>99}.{106}{99}{1;2;3;4}
+
+bin 14
+mixed, A, blue target, right, fast, preceded by slow
+{t<1800-2000>99}.{106}{99}{1;2;3;4}
+
+bin 15
+mixed, A, blue target, left, fast, preceded by fast
+{t<700-900>99}.{108}{99}{1;2;3;4}
+
+bin 16
+mixed, A, blue target, left, fast, preceded by slow
+{t<1800-2000>99}.{108}{99}{1;2;3;4}
+
+bin 17
+mixed, A, red target, left, slow, preceded by slow
+{t<1800-2000>99}.{110}{99}{1;2;3;4}
+
+bin 18
+mixed, A, red target, left, slow, preceded by fast
+{t<700-900>99}.{110}{99}{1;2;3;4}
+
+bin 19
+mixed, A, red target, right, slow, preceded by slow
+{t<1800-2000>99}.{112}{99}{1;2;3;4}
+
+bin 20
+mixed, A, red target, right, slow, preceded by fast
+{t<700-900>99}.{112}{99}{1;2;3;4}
+
+bin 21
+mixed, A, blue target, right, slow, preceded by slow
+{t<1800-2000>99}.{114}{99}{1;2;3;4}
+
+bin 22
+mixed, A, blue target, right, slow, preceded by fast
+{t<700-900>99}.{114}{99}{1;2;3;4}
+
+bin 23
+mixed, A, blue target, left, slow, preceded by slow
+{t<1800-2000>99}.{116}{99}{1;2;3;4}
+
+bin 24
+mixed, A, blue target, left, slow, preceded by fast
+{t<700-900>99}.{116}{99}{1;2;3;4}
+
+bin 25
+blocked, B, red target, left, fast
+.{121}{99}{1;2;3;4}
+
+bin 26
+blocked, B, red target, right, fast
+.{123}{99}{1;2;3;4}
+
+bin 27
+blocked, B, blue target, right, fast
+.{125}{99}{1;2;3;4}
+
+bin 28
+blocked, B, blue target, left, fast
+.{127}{99}{1;2;3;4}
+
+bin 29
+blocked, B, red target, left, slow
+.{129}{99}{1;2;3;4}
+
+bin 30
+blocked, B, red target, right, slow
+.{131}{99}{1;2;3;4}
+
+bin 31
+blocked, B, blue target, right, slow
+.{133}{99}{1;2;3;4}
+
+bin 32
+blocked, B, blue target, left, slow
+.{135}{99}{1;2;3;4}
+
+bin 33
+mixed, B, red target, left, fast, preceded by fast
+{t<700-900>99}.{122}{99}{1;2;3;4}
+
+bin 34
+mixed, B, red target, left, fast, preceded by slow
+{t<1800-2000>99}.{122}{99}{1;2;3;4}
+
+bin 35
+mixed, B, red target, right, fast, preceded by fast
+{t<700-900>99}.{124}{99}{1;2;3;4}
+
+bin 36
+mixed, B, red target, right, fast, preceded by slow
+{t<1800-2000>99}.{124}{99}{1;2;3;4}
+
+bin 37
+mixed, B, blue target, right, fast, preceded by fast
+{t<700-900>99}.{126}{99}{1;2;3;4}
+
+bin 38
+mixed, B, blue target, right, fast, preceded by slow
+{t<1800-2000>99}.{126}{99}{1;2;3;4}
+
+bin 39
+mixed, B, blue target, left, fast, preceded by fast
+{t<700-900>99}.{128}{99}{1;2;3;4}
+
+bin 40
+mixed, B, blue target, left, fast, preceded by slow
+{t<1800-2000>99}.{128}{99}{1;2;3;4}
+
+bin 41
+mixed, B, red target, left, slow, preceded by slow
+{t<1800-2000>99}.{130}{99}{1;2;3;4}
+
+bin 42
+mixed, B, red target, left, slow, preceded by fast
+{t<700-900>99}.{130}{99}{1;2;3;4}
+
+bin 43
+mixed, B, red target, right, slow, preceded by slow
+{t<1800-2000>99}.{132}{99}{1;2;3;4}
+
+bin 44
+mixed, B, red target, right, slow, preceded by fast
+{t<700-900>99}.{132}{99}{1;2;3;4}
+
+bin 45
+mixed, B, blue target, right, slow, preceded by slow
+{t<1800-2000>99}.{134}{99}{1;2;3;4}
+
+bin 46
+mixed, B, blue target, right, slow, preceded by fast
+{t<700-900>99}.{134}{99}{1;2;3;4}
+
+bin 47
+mixed, B, blue target, left, slow, preceded by slow
+{t<1800-2000>99}.{136}{99}{1;2;3;4}
+
+bin 48
+mixed, B, blue target, left, slow, preceded by fast
+{t<700-900>99}.{136}{99}{1;2;3;4}
+
+bin 49
+blocked, C, red target, left, fast
+.{201}{99}{1;2;3;4}
+
+bin 50
+blocked, C, red target, right, fast
+.{203}{99}{1;2;3;4}
+
+bin 51
+blocked, C, blue target, right, fast
+.{205}{99}{1;2;3;4}
+
+bin 52
+blocked, C, blue target, left, fast
+.{207}{99}{1;2;3;4}
+
+bin 53
+blocked, C, red target, left, slow
+.{209}{99}{1;2;3;4}
+
+bin 54
+blocked, C, red target, right, slow
+.{211}{99}{1;2;3;4}
+
+bin 55
+blocked, C, blue target, right, slow
+.{213}{99}{1;2;3;4}
+
+bin 56
+blocked, C, blue target, left, slow
+.{215}{99}{1;2;3;4}
+
+bin 57
+mixed, C, red target, left, fast, preceded by fast
+{t<700-900>99}.{202}{99}{1;2;3;4}
+
+bin 58
+mixed, C, red target, left, fast, preceded by slow
+{t<1800-2000>99}.{202}{99}{1;2;3;4}
+
+bin 59
+mixed, C, red target, right, fast, preceded by fast
+{t<700-900>99}.{204}{99}{1;2;3;4}
+
+bin 60
+mixed, C, red target, right, fast, preceded by slow
+{t<1800-2000>99}.{204}{99}{1;2;3;4}
+
+bin 61
+mixed, C, blue target, right, fast, preceded by fast
+{t<700-900>99}.{206}{99}{1;2;3;4}
+
+bin 62
+mixed, C, blue target, right, fast, preceded by slow
+{t<1800-2000>99}.{206}{99}{1;2;3;4}
+
+bin 63
+mixed, C, blue target, left, fast, preceded by fast
+{t<700-900>99}.{208}{99}{1;2;3;4}
+
+bin 64
+mixed, C, blue target, left, fast, preceded by slow
+{t<1800-2000>99}.{208}{99}{1;2;3;4}
+
+bin 65
+mixed, C, red target, left, slow, preceded by slow
+{t<1800-2000>99}.{210}{99}{1;2;3;4}
+
+bin 66
+mixed, C, red target, left, slow, preceded by fast
+{t<700-900>99}.{210}{99}{1;2;3;4}
+
+bin 67
+mixed, C, red target, right, slow, preceded by slow
+{t<1800-2000>99}.{212}{99}{1;2;3;4}
+
+bin 68
+mixed, C, red target, right, slow, preceded by fast
+{t<700-900>99}.{212}{99}{1;2;3;4}
+
+bin 69
+mixed, C, blue target, right, slow, preceded by slow
+{t<1800-2000>99}.{214}{99}{1;2;3;4}
+
+bin 70
+mixed, C, blue target, right, slow, preceded by fast
+{t<700-900>99}.{214}{99}{1;2;3;4}
+
+bin 71
+mixed, C, blue target, left, slow, preceded by slow
+{t<1800-2000>99}.{216}{99}{1;2;3;4}
+
+bin 72
+mixed, C, blue target, left, slow, preceded by fast
+{t<700-900>99}.{216}{99}{1;2;3;4}
+
+bin 73
+blocked, D, red target, left, fast
+.{221}{99}{1;2;3;4}
+
+bin 74
+blocked, D, red target, right, fast
+.{223}{99}{1;2;3;4}
+
+bin 75
+blocked, D, blue target, right, fast
+.{225}{99}{1;2;3;4}
+
+bin 76
+blocked, D, blue target, left, fast
+.{227}{99}{1;2;3;4}
+
+bin 77
+blocked, D, red target, left, slow
+.{229}{99}{1;2;3;4}
+
+bin 78
+blocked, D, red target, right, slow
+.{231}{99}{1;2;3;4}
+
+bin 79
+blocked, D, blue target, right, slow
+.{233}{99}{1;2;3;4}
+
+bin 80
+blocked, D, blue target, left, slow
+.{235}{99}{1;2;3;4}
+
+bin 81
+mixed, D, red target, left, fast, preceded by fast
+{t<700-900>99}.{222}{99}{1;2;3;4}
+
+bin 82
+mixed, D, red target, left, fast, preceded by slow
+{t<1800-2000>99}.{222}{99}{1;2;3;4}
+
+bin 83
+mixed, D, red target, right, fast, preceded by fast
+{t<700-900>99}.{224}{99}{1;2;3;4}
+
+bin 84
+mixed, D, red target, right, fast, preceded by slow
+{t<1800-2000>99}.{224}{99}{1;2;3;4}
+
+bin 85
+mixed, D, blue target, right, fast, preceded by fast
+{t<700-900>99}.{226}{99}{1;2;3;4}
+
+bin 86
+mixed, D, blue target, right, fast, preceded by slow
+{t<1800-2000>99}.{226}{99}{1;2;3;4}
+
+bin 87
+mixed, D, blue target, left, fast, preceded by fast
+{t<700-900>99}.{228}{99}{1;2;3;4}
+
+bin 88
+mixed, D, blue target, left, fast, preceded by slow
+{t<1800-2000>99}.{228}{99}{1;2;3;4}
+
+bin 89
+mixed, D, red target, left, slow, preceded by slow
+{t<1800-2000>99}.{230}{99}{1;2;3;4}
+
+bin 90
+mixed, D, red target, left, slow, preceded by fast
+{t<700-900>99}.{230}{99}{1;2;3;4}
+
+bin 91
+mixed, D, red target, right, slow, preceded by slow
+{t<1800-2000>99}.{232}{99}{1;2;3;4}
+
+bin 92
+mixed, D, red target, right, slow, preceded by fast
+{t<700-900>99}.{232}{99}{1;2;3;4}
+
+bin 93
+mixed, D, blue target, right, slow, preceded by slow
+{t<1800-2000>99}.{234}{99}{1;2;3;4}
+
+bin 94
+mixed, D, blue target, right, slow, preceded by fast
+{t<700-900>99}.{234}{99}{1;2;3;4}
+
+bin 95
+mixed, D, blue target, left, slow, preceded by slow
+{t<1800-2000>99}.{236}{99}{1;2;3;4}
+
+bin 96
+mixed, D, blue target, left, slow, preceded by fast
+{t<700-900>99}.{236}{99}{1;2;3;4}
