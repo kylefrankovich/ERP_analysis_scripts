@@ -18,23 +18,8 @@ num_subs = length(subject_list);
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
 ANALYSIS_DIR = ('/Users/kfranko/Desktop/ERP_analysis_scripts/');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 sub_data_folder = 'S19';
 sub_num = 'S19';
-=======
-% sub_data_folder = 'S06';
-% sub_num = 'S6';
->>>>>>> origin/master
-=======
-% sub_data_folder = 'S06';
-% sub_num = 'S6';
->>>>>>> origin/master
-=======
-% sub_data_folder = 'S06';
-% sub_num = 'S6';
->>>>>>> origin/master
 
 % sub_data_folder = 'S04';
 % sub_num = 'S4';
