@@ -14,7 +14,7 @@ numsubjects = length(subject_list); % number of subjects
 % review subs: S06: 5; S07: 6; S09: 8; S12: 9; S16: 12; S18: 14;
 % 
 
-sub_to_process = 'S21';
+sub_to_process = 'S09';
 cur_sub = subjectMap(sub_to_process);
 sub_folder = fullfile(ERP_data_folder, sub_to_process, '/');
 sub_folder_old_data = fullfile(ERP_data_folder, sub_to_process, '/', 'old_analysis/');
@@ -49,7 +49,7 @@ ERP = pop_ploterps( ERP,  [1 2], 9, 'AutoYlim', 'off', 'Axsize', [ 0.05 0.08], '
 fprintf('\n******\nProcessing subject %s\n******\n\n', sub_to_process);
 ERP = pop_loaderp( 'filename', [cur_sub '_LOTP_4AFC_ERP2_ERP_contra_ipsi_diff_blocked_mixed.erp'], 'filepath', char(sub_folder) );
 
-ERP = pop_ploterps( ERP, [1 2],  1:11 , 'AutoYlim', 'on', 'Axsize', [ 0.05 0.08], 'BinNum', 'on', 'Blc', 'pre', 'Box', [ 4 3], 'ChLabel',...
+ERP = pop_ploterps( ERP, [3 4],  1:11 , 'AutoYlim', 'on', 'Axsize', [ 0.05 0.08], 'BinNum', 'on', 'Blc', 'pre', 'Box', [ 4 3], 'ChLabel',...
  'on', 'FontSizeChan',  10, 'FontSizeLeg',  12, 'FontSizeTicks',  10, 'LegPos', 'bottom', 'Linespec', {'k-' , 'r-' }, 'LineWidth',  1, 'Maximize',...
  'on', 'Position', [ 103.714 29.6429 106.857 31.9286], 'Style', 'Classic', 'Tag', 'ERP_figure', 'Transparency',  0, 'xscale',...
  [ -200.0 698.0   -200:100:600 ], 'YDir', 'normal' );
