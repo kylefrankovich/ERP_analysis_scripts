@@ -6,20 +6,20 @@
 clear all
 close all
 
-subject_list = {'S01','S03','S04','S05','S06','S07','S08','S09','S12','S13','S14','S16','S17','S18', 'S20', 'S21'};
-subject_numbers = {'S1','S3','S4','S5','S6','S7','S8','S9','S12','S13','S14','S16','S17','S18', 'S20', 'S21'};
+subject_list = {'S01','S03','S04','S05','S06','S07','S08','S09','S12','S13','S14','S16','S17','S18', 'S19', 'S20', 'S21'};
+subject_numbers = {'S1','S3','S4','S5','S6','S7','S8','S9','S12','S13','S14','S16','S17','S18', 'S19', 'S20', 'S21'};
 num_subs = length(subject_list);
 
-subject_list = {'S20','S21'};
-subject_numbers = {'S20','S21'};
-num_subs = length(subject_list);
+% subject_list = {'S20','S21'};
+% subject_numbers = {'S20','S21'};
+% num_subs = length(subject_list);
 
 
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
 ANALYSIS_DIR = ('/Users/kfranko/Desktop/ERP_analysis_scripts/');
 
-sub_data_folder = 'S19';
-sub_num = 'S19';
+% sub_data_folder = 'S19';
+% sub_num = 'S19';
 
 % sub_data_folder = 'S04';
 % sub_num = 'S4';
@@ -110,7 +110,7 @@ for i = 1:num_subs
     
     
     % bin events
-    EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_blocked_mixed_all_resps_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins_blocked_mixed.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
+    EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_blocked_mixed_correct_resps_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins_blocked_mixed.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
     [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 9, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins'], 'gui', 'off');
     
     
