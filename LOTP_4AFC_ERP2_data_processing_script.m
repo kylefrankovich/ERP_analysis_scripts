@@ -156,7 +156,7 @@ for i = 1:num_subs
     % Window step = 10 ms; Flags to be activated = 1 & 3
     
     EEG  = pop_artstep( EEG , 'Channel',  33, 'Flag',  3, 'Threshold',  30, 'Twindow', [ -200 698], 'Windowsize',  200, 'Windowstep',  10 );
-    EEG.setname= [sub_num 'S3_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG'];
+    EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG'];
     
     
     % save EEG artifact rejection summary:
