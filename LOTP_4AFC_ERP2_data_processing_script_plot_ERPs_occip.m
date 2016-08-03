@@ -18,7 +18,7 @@ numsubjects = length(subject_list); % number of subjects
 % review subs: S06: 5; S07: 6; S09: 8; S12: 9; S16: 12; S18: 14;
 % 
 
-sub_to_process = 'S01';
+sub_to_process = 'S09';
 cur_sub = subjectMap(sub_to_process);
 sub_folder = fullfile(ERP_data_folder, sub_to_process, '/');
 
