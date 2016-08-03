@@ -29,30 +29,23 @@ for i = 1:num_subs
     file_name = [sub_num file_name_template];
     
     % load current sub (correct responses)
-%     ERP = pop_loaderp( 'filename', [file_name 'ERP_contra_ipsi_diff_blocked_mixed.erp'], 'filepath', [data_directory '/'] );
+    ERP = pop_loaderp( 'filename', [file_name 'ERP_contra_ipsi_diff_blocked_mixed.erp'], 'filepath', [data_directory '/'] );
     
     % load current sub (all responses)
-    ERP = pop_loaderp( 'filename', [file_name 'ERP_contra_ipsi_diff_blocked_mixed_all_resps.erp'], 'filepath', [data_directory '/'] );
+    ERP = pop_loaderp( 'filename', [file_name 'ERP_contra_ipsi_diff_blocked_mixed.erp'], 'filepath', [data_directory '/'] );
     
     % add occipital electrode site:
     ERP = pop_erpchanoperator( ERP, {  'ch12 = (ch5+ch6+ch7+ch9+ch10+ch11)/6 label occipital average'} , 'ErrorMsg', 'popup', 'Warning', 'on' );
     
     
-    % save new erp (correct responses):
-%     erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse_blocked_mixed_occip.txt'];  % name for erpset menu
-    
-    % save new erp (all responses)
-    erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse_blocked_mixed_occip_all_resps.txt'];  % name for erpset menu
+    % save new erp:
+    erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse_blocked_mixed_occip.txt'];  % name for erpset menu
    
     
     % Now we will do bin operations using a set of equations
     % stored in the file 'fast_contra_ipsi_bin_operations.txt';
     
-    % correct responses:
-%     fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed_occip.erp'];
-    
-    % all responses:
-    fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed_occip_all_resps.erp'];
+    fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed_occip.erp'];
     pop_savemyerp(ERP, 'erpname', erpname, 'filename', fname_erp);
     
     fprintf('\n\n\n**** subject %s processed! ****\n\n\n', sub_num);
