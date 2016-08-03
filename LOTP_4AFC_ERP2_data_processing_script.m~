@@ -10,9 +10,9 @@ subject_list = {'S01','S03','S04','S05','S06','S07','S08','S09','S12','S13','S14
 subject_numbers = {'S1','S3','S4','S5','S6','S7','S8','S9','S12','S13','S14','S16','S17','S18', 'S19', 'S20', 'S21'};
 num_subs = length(subject_list);
 
-subject_list = {'S10'};
-subject_numbers = {'S10'};
-num_subs = length(subject_list);
+% subject_list = {'S10'};
+% subject_numbers = {'S10'};
+% num_subs = length(subject_list);
 
 
 ERP_data_folder = '/Users/kfranko/Desktop/LOTP_ERP_data/';
@@ -103,16 +103,23 @@ for i = 1:num_subs
     %     [ALLEEG EEG CURRENTSET] =  pop_newset(ALLEEG, EEG, 4, 'setname', [SUB{i} '_V' m '_hpfilt_VEOG_reref_shifted'], 'savenew', [DIR SUB{i} '/' SUB{i} '_V' m '_hpfilt_reref_shifted.set'], 'gui', 'off');
     %
     
-    %create event list
-    EEG  = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'BoundaryNumeric', { -99 }, 'BoundaryString', { 'boundary' }, 'Eventlist', [data_directory,'/',sub_num,file_name_template,'eventlist_blocked_mixed.txt']);
+%     %create event list (correct responses)
+%     EEG  = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'BoundaryNumeric', { -99 }, 'BoundaryString', { 'boundary' }, 'Eventlist', [data_directory,'/',sub_num,file_name_template,'eventlist_blocked_mixed.txt']);
+%     [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 8, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist'], 'gui', 'off');
+    
+    %create event list (all responses)
+    EEG  = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'BoundaryNumeric', { -99 }, 'BoundaryString', { 'boundary' }, 'Eventlist', [data_directory,'/',sub_num,file_name_template,'eventlist_blocked_mixed_all_resps.txt']);
     [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 8, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist'], 'gui', 'off');
     
     
     
-    % bin events
-    EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_blocked_mixed_correct_resps_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins_blocked_mixed.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
-    [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 9, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins'], 'gui', 'off');
+%     % bin events (correct responses)
+%     EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_blocked_mixed_correct_resps_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins_blocked_mixed.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
+%     [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 9, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins'], 'gui', 'off');
     
+    % bin events (all responses)
+    EEG  = pop_binlister( EEG , 'BDF', [ANALYSIS_DIR 'LOTP_4AFC_blocked_mixed_all_resps_bdf.txt'], 'ExportEL', [data_directory,'/',sub_num,file_name_template,'eventlist_bins_blocked_mixed_all_resps.txt'], 'IndexEL',  1, 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Voutput', 'EEG' );
+    [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 9, 'setname', [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins'], 'gui', 'off');
     
     
     
@@ -159,19 +166,22 @@ for i = 1:num_subs
     EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG'];
     
     
-    % for S10 (subject had weird drifting throughout session, see The
-    % Archives/notes on 6/14); Steve recommends adding a 100µV peak to peak
-    % amplitude AR step:
-    
-    
-    EEG  = pop_artmwppth( EEG , 'Channel',  1:32, 'Flag',  4, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  898, 'Windowstep',  0 ); % GUI: 23-May-2016 16:59:21
-    EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG_S10_drift'];
-    
+%     % for S10 (subject had weird drifting throughout session, see The
+%     % Archives/notes on 6/14); Steve recommends adding a 100µV peak to peak
+%     % amplitude AR step:
+%     
+%     
+%     EEG  = pop_artmwppth( EEG , 'Channel',  1:32, 'Flag',  4, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  898, 'Windowstep',  100 ); % GUI: 23-May-2016 16:59:21
+%     EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG_S10_drift'];
+%     
     
     % save EEG artifact rejection summary:
     
-    EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_template,'artifact_rejection_summary_blocked_mixed.txt']);
+%     % correct responses:
+%     EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_template,'artifact_rejection_summary_blocked_mixed.txt']);
     
+    % all responses:
+    EEG = pop_summary_AR_eeg_detection(EEG, [data_directory,'/',sub_num,file_name_template,'artifact_rejection_summary_blocked_mixed_all_resps.txt']);
     
     
     % averaging:
