@@ -159,14 +159,14 @@ for i = 1:num_subs
     EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG'];
     
     
-%     % for S10 (subject had weird drifting throughout session, see The
-%     % Archives/notes on 6/14); Steve recommends adding a 100µV peak to peak
-%     % amplitude AR step:
-%     
-%     
-%     EEG  = pop_artmwppth( EEG , 'Channel',  1:32, 'Flag',  4, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  898, 'Windowstep',  100 ); % GUI: 23-May-2016 16:59:21
-%     EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG_S10_drift'];
-%     
+    % for S10 (subject had weird drifting throughout session, see The
+    % Archives/notes on 6/14); Steve recommends adding a 100µV peak to peak
+    % amplitude AR step:
+    
+    
+    EEG  = pop_artmwppth( EEG , 'Channel',  1:32, 'Flag',  4, 'Threshold',  100, 'Twindow', [ -200 698], 'Windowsize',  898, 'Windowstep',  0 ); % GUI: 23-May-2016 16:59:21
+    EEG.setname= [sub_num '_4AFC_ERP2_merged_hpfilt_reref_elist_bins_epoch_lpfilt_arMW_arVEOG_arHEOG_S10_drift'];
+    
     
     % save EEG artifact rejection summary:
     

@@ -37,20 +37,12 @@ for i = 1:num_subs
     
     % save new erp:
     erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse_blocked_mixed_occip.txt'];  % name for erpset menu
-    
-    
-    
-    
-    ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'LOTP_4AFC_collapse_blocked_mixed.txt']);
-    erpname = [data_directory,'/',sub_num,file_name_template,'ERP_collapse_blocked_mixed_occip.txt'];  % name for erpset menu
-    
+   
     
     % Now we will do bin operations using a set of equations
     % stored in the file 'fast_contra_ipsi_bin_operations.txt';
     
-    ERP = pop_binoperator( ERP, [ANALYSIS_DIR 'contra_ipsi_bin_operators_blocked_mixed.txt']);
-    erpname = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed'];  % name for erpset menu
-    fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed.erp'];
+    fname_erp = [data_directory,'/',sub_num,file_name_template,'ERP_contra_ipsi_diff_blocked_mixed_occip.erp'];
     pop_savemyerp(ERP, 'erpname', erpname, 'filename', fname_erp);
     
     fprintf('\n\n\n**** subject %s processed! ****\n\n\n', sub_num);
@@ -58,3 +50,8 @@ for i = 1:num_subs
     
     
 end
+
+
+
+
+
