@@ -1,0 +1,69 @@
+       value	     chindex	     chlabel	        bini	                                                                                                   ERPset
+      -3.779	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S01/S1_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -2.565	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S01/S1_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -3.211	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S01/S1_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -2.067	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S01/S1_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.620	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S03/S3_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.396	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S03/S3_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.297	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S03/S3_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.213	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S03/S3_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.885	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S04/S4_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.143	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S04/S4_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -2.104	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S04/S4_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.286	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S04/S4_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.213	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S05/S5_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.187	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S05/S5_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.475	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S05/S5_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.458	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S05/S5_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.609	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S06/S6_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.018	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S06/S6_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.769	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S06/S6_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.365	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S06/S6_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.887	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S07/S7_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.392	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S07/S7_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.508	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S07/S7_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.337	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S07/S7_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.490	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S08/S8_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.061	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S08/S8_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.894	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S08/S8_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.396	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S08/S8_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -2.285	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S09/S9_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.763	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S09/S9_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.021	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S09/S9_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.942	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S09/S9_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.685	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S12/S12_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.053	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S12/S12_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.438	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S12/S12_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.206	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S12/S12_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.713	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S13/S13_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.088	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S13/S13_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.792	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S13/S13_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.702	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S13/S13_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.968	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S14/S14_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.604	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S14/S14_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.604	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S14/S14_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.250	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S14/S14_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.663	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S16/S16_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.291	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S16/S16_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.682	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S16/S16_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.982	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S16/S16_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.450	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S17/S17_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.344	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S17/S17_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.712	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S17/S17_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.508	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S17/S17_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.939	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S18/S18_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.837	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S18/S18_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.440	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S18/S18_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.523	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S18/S18_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.054	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S19/S19_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.109	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S19/S19_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+       0.055	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S19/S19_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+       0.004	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S19/S19_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.982	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S20/S20_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.302	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S20/S20_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.801	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S20/S20_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -0.481	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S20/S20_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -2.165	           9	     PO7/PO8	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S21/S21_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.826	          12	occipital average	           1	/Users/kfranko/Desktop/LOTP_ERP_data/S21/S21_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.186	           9	     PO7/PO8	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S21/S21_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
+      -1.323	          12	occipital average	           2	/Users/kfranko/Desktop/LOTP_ERP_data/S21/S21_LOTP_4AFC_ERP2_ERP_collapse_blocked_mixed_occip_all_resps.txt
