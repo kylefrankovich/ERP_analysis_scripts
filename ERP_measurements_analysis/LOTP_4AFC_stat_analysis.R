@@ -24,9 +24,6 @@ setwd("~/Desktop/ERP_analysis_scripts/ERP_measurements_analysis")
 df_blocked_correct_N2pc <- read.table('blocked_correct_resp_N2pc.txt', 
                                     sep="\t", header = TRUE)
 
-head(df_blocked_correct_N2pc)
-
-
 df_blocked_correct_SPCN <- read.table('blocked_correct_resp_SPCN.txt', 
                                       sep="\t", header = TRUE)
 
@@ -88,8 +85,8 @@ df_mixed_all_resp_SPCN_occip = filter(df_mixed_all_resp_SPCN, chindex == 12)
 df_mixed_all_resp_SPCN_PO7_PO8 = filter(df_mixed_all_resp_SPCN, chindex == 9)
 
 
-# electrode_site = 'occip' # 'occip' or 'PO7_PO8'
-electrode_site = 'PO7_PO8'
+electrode_site = 'occip' # 'occip' or 'PO7_PO8'
+# electrode_site = 'PO7_PO8'
 condition = 'mixed'
 # condition = 'blocked'
 # response = 'correct'
