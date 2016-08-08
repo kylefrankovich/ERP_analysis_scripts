@@ -11,6 +11,8 @@ library(ggplot2)
 #   Hmisc package required for this function 
 # had to re-install Hmisc0
 
+setwd("~/Desktop/ERP_analysis_scripts/ERP_measurements_analysis")
+
 # Load Data
 df <- read.table('LOTP_4AFC_ERP2_behavioral_data.txt', stringsAsFactor = FALSE, header = TRUE)
 
@@ -22,116 +24,378 @@ head(df)
 
 length(unique(df$SubID))
 
+# # find subject means
+# sub.mn <- df %>%
+#   group_by(TOA, Blocked, SubID) %>%
+#   summarise(
+#     mrt = mean(RT),
+#     acc = mean(Correct))
+
 # find subject means
 sub.mn <- df %>%
+  mutate(
+    cor = Correct == 1 & !is.na(Correct), selRT = RT < .7 & RT > .2 & cor == 1) %>%
   group_by(TOA, Blocked, SubID) %>%
   summarise(
-    mrt = mean(RT),
-    acc = mean(Correct))
+    mrt = mean(RT[cor == 1]),
+    rt2 = mean(RT[selRT == 1]),
+    acc = mean(cor),
+    acc2 = mean(selRT), # correct acc to use, appropriate RT values
+    tnum = n(),
+    chk = sum(Correct == 1 & !is.na(Correct)) / 128)
+
+# Normalize ACC/RT
+sub.mn <- sub.mn %>%
+  group_by(SubID, Blocked) %>%
+  mutate(
+    submean = mean(acc2), subRTmean = mean(rt2)) %>%
+  ungroup() %>%
+  mutate(
+    grandmn = mean(acc2), grandRTmn = mean(rt2)) %>%
+  group_by(TOA, Blocked, SubID) %>%
+  mutate(
+    acc.nor = ((acc2 - submean) + grandmn), RT.nor = ((rt2 - subRTmean) + grandRTmn))
+
+# # group means
+# grp.mn <- summarise(sub.mn,
+#                     grt = mean(mrt),
+#                     gac = mean(acc))
+
+
+# # Normalize ACC
+# sub.mn <- sub.mn %>%
+#   group_by(SubID) %>%
+#   mutate(
+#     submean = mean(acc)) %>%
+#   ungroup() %>%
+#   mutate(
+#     grandmn = mean(acc)) %>%
+#   group_by(TOA, Blocked, SubID) %>%
+#   mutate(
+#     acc.nor = (acc - submean) + grandmn)
 
 # group means
-grp.mn <- summarise(sub.mn,
-                    grt = mean(mrt),
-                    gac = mean(acc))
+grp.mn <- sub.mn %>%
+  group_by(TOA, Blocked) %>%
+  summarise(grt = mean(mrt),
+            grt2 = mean(rt2),
+            gac = mean(acc),
+            gac2 = mean(acc2),
+            chk = mean(chk))
+
+
+# sequential analysis for non-blocked
+
+lagpad <- function(x, k) {
+  c(rep(NA, k), x)[1 : length(x)] 
+}
+
+# sequential subject means
+
+seq.sub.mn <- filter(df, Blocked == 0) %>%
+  mutate(
+    seqTOA = lagpad(TOA,1), cor = Correct == 1 & !is.na(Correct), 
+    selRT = RT < .7 & RT > .2 & cor == 1, cor.seq = lagpad(cor,1))  %>%
+  group_by(seqTOA, SubID) %>%
+  summarise(
+    seqmrt = mean(RT[cor == 1]),
+    seqrt2 = mean(RT[selRT == 1]),
+    seqacc = mean(cor),
+    seqacc2 = mean(selRT),
+    # seqtnum = n(),
+    seqchk = sum(Correct == 1 & !is.na(Correct)) / 128)
 
 
 # Normalize ACC
-sub.mn <- sub.mn %>%
+seq.sub.mn <- filter(seq.sub.mn, seqTOA > 1) %>%
   group_by(SubID) %>%
   mutate(
-    submean = mean(acc)) %>%
+    submean = mean(seqacc2), subRTmean = mean(seqrt2)) %>%
   ungroup() %>%
   mutate(
-    grandmn = mean(acc)) %>%
-  group_by(TOA, Blocked, SubID) %>%
+    grandmn = mean(seqacc2), grandRTmn = mean(seqrt2)) %>%
+  group_by(seqTOA, SubID) %>%
   mutate(
-    acc.nor = (acc - submean) + grandmn)
+    acc.nor = ((seqacc2 - submean) + grandmn), RT.nor = ((seqrt2 - subRTmean) + grandRTmn))
 
 
-# plot normalized ACC
-ggplot(sub.mn, aes(Blocked, acc.nor, color = factor(TOA)))+
-  labs(x = 'Blocked v. Mixed', y = 'Accuracy (%)', color = 'TOA (ms)')+
-  scale_x_continuous(breaks = 1:2)+
-  scale_y_continuous(labels = function(x) x * 100)+
-  stat_summary(fun.data = mean_cl_normal, geom = 'pointrange', size = 1.5) +
-  stat_summary(fun.y = mean, geom = 'line', size = 1.5) +
+
+# sequential subject means (previous trial correct/incorrect)
+
+seq.sub.mn.Corr.Analysis <- df %>%
+  mutate(
+    seqTOA = lagpad(TOA,1), cor = Correct == 1 & !is.na(Correct), 
+    selRT = RT < .7 & RT > .2 & cor == 1, cor.seq = lagpad(selRT,1))  %>%
+  group_by(TOA, Blocked, SubID) %>%
+  summarise(
+    seqmrt = mean(RT[cor == 1]),
+    seqrt2 = mean(RT[selRT == 1]),
+    seqacc = mean(cor),
+    seqacc2 = mean(selRT[cor.seq == 0]), # accuracy when previous trial is incorrect
+    seqacc3 = mean(selRT[cor.seq == 1]), # accuracy when previous trial is correct
+    # seqtnum = n(),
+    seqchk = sum(Correct == 1 & !is.na(Correct)) / 128)
+
+
+
+# sequential group means
+
+seq.grp.mn <- seq.sub.mn %>%
+  group_by(seqTOA) %>%
+  summarise(seqgrt = mean(seqmrt),
+            seqgrt2 = mean(seqrt2),
+            seqgac = mean(seqacc),
+            seqgac2 = mean(seqacc2),
+            seqchk = mean(seqchk))
+
+
+
+
+##############################
+##### plot group means #######
+##############################
+
+
+### acc
+
+# blocked: 
+
+ggplot(filter(sub.mn, Blocked == 1),
+       aes(factor(TOA), acc.nor, fill = factor(TOA)))+ 
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'Accuracy', title = 'Accuracy (Blocked)', fill = "TOA")+ 
+  theme_bw(base_size = 20)
+
+ggsave(file = "LOTP_4AFC_ERP_blocked_performance.pdf", path = plot_path, width = 6, height = 7)
+
+
+# mixed: 
+
+ggplot(filter(seq.sub.mn, seqTOA > 1),
+       aes(factor(seqTOA), acc.nor, fill = factor(seqTOA)))+ 
+  stat_summary(fun.y = mean, geom = 'bar')+ 
+  stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'Accuracy', title = 'Accuracy (Mixed)', fill = "TOA")+ 
+  theme_bw(base_size = 20)
+
+ggsave(file = "LOTP_4AFC_ERP_mixed_performance.pdf", path = plot_path, width = 6, height = 7)
+
+## acc sequential
+
+# previous trial incorrect
+ggplot(filter(seq.sub.mn.Corr.Analysis, Blocked == 1),
+       aes(factor(TOA), seqacc2, fill = factor(TOA))) + stat_summary(fun.y = mean, geom = 'bar')+ 
+  stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'Accuracy', title = 'Performance (Blocked), previous trial incorrect', fill = "TOA")+ 
+  theme_bw(base_size = 20)
+
+# previous trial correct
+ggplot(filter(seq.sub.mn.Corr.Analysis, Blocked == 1),
+       aes(factor(TOA), seqacc3, fill = factor(TOA)))+ 
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'Accuracy', title = 'Performance (Blocked), previous trial correct', fill = "TOA")+ 
   theme_bw(base_size = 20)
 
 
-ggsave(file = "LOTP_mk4_behavioral_perf_rstudio.pdf", path = plot_path, width = 8, height = 6)
+
+### RT
+
+# blocked: 
+
+ggplot(filter(sub.mn, Blocked == 1),
+       aes(factor(TOA), RT.nor, fill = factor(TOA)))+ 
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'RT (ms)', title = "RT (Blocked)", fill = "TOA")+     
+  theme_bw(base_size = 20)
+
+ggsave(file = "LOTP_4AFC_mk2_blocked_rt.pdf", path = plot_path, width = 6, height = 7)
+
+# mixed:
+
+ggplot(filter(seq.sub.mn, seqTOA > 1),
+       aes(factor(seqTOA), RT.nor, fill = factor(seqTOA)))+
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'RT (ms)', title = "RT (Mixed)", fill = "TOA")+     
+  theme_bw(base_size = 20)
+
+ggsave(file = "LOTP_4AFC_mk2_mixed_rt.pdf", path = plot_path, width = 6, height = 7)
 
 
 
-# error bars not working, look at this example:
+#################
+
+##### stats #####
+
+#################
 
 
-tg <- ToothGrowth
+stat.df <- df %>%
+  mutate(
+    cor = Correct == 1 & !is.na(Correct), selRT = RT < .7 & RT > .2 & cor == 1) 
 
-tgc <- summarySE(tg, measurevar="len", groupvars=c("supp","dose"))
+# factorize!
 
-# Use dose as a factor rather than numeric
-tgc2 <- tgc
-tgc2$dose <- factor(tgc2$dose)
+stat.df$SubID = factor(stat.df$SubID)
 
-# Error bars represent standard error of the mean
-ggplot(tgc2, aes(x=dose, y=len, fill=supp)) + 
-  geom_bar(position=position_dodge(), stat="identity") +
-  geom_errorbar(aes(ymin=len-se, ymax=len+se),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9))
+stat.df$TOA = factor(stat.df$TOA)
 
 
-df2 <- summarySE(df, measurevar="Correct", groupvars=c("TOA","Blocked"))
-df2 <- df
+# convert logical to numeric
 
-df2$TOA = factor(df2$TOA)
-class(df2$TOA)
-df2$Blocked = factor(df2$Blocked)
-class(df2$Blocked)
+stat.df$selRT = stat.df$selRT + 0 
+
+class(stat.df$SubID)
+class(stat.df$TOA)
+class(stat.df$Correct)
+class(stat.df$selRT)
 
 
 
+nsubs = length(unique(df$SubID))
 
-## Summarizes data.
-## Gives count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
-##   data: a data frame.
-##   measurevar: the name of a column that contains the variable to be summariezed
-##   groupvars: a vector containing names of columns that contain grouping variables
-##   na.rm: a boolean that indicates whether to ignore NA's
-##   conf.interval: the percent range of the confidence interval (default is 95%)
-summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
-                      conf.interval=.95, .drop=TRUE) {
-  library(plyr)
-  
-  # New version of length which can handle NA's: if na.rm==T, don't count them
-  length2 <- function (x, na.rm=FALSE) {
-    if (na.rm) sum(!is.na(x))
-    else       length(x)
-  }
-  
-  # This does the summary. For each group's data frame, return a vector with
-  # N, mean, and sd
-  datac <- ddply(data, groupvars, .drop=.drop,
-                 .fun = function(xx, col) {
-                   c(N    = length2(xx[[col]], na.rm=na.rm),
-                     mean = mean   (xx[[col]], na.rm=na.rm),
-                     sd   = sd     (xx[[col]], na.rm=na.rm)
-                   )
-                 },
-                 measurevar
-  )
-  
-  # Rename the "mean" column    
-  datac <- rename(datac, c("mean" = measurevar))
-  
-  datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean
-  
-  # Confidence interval multiplier for standard error
-  # Calculate t-statistic for confidence interval: 
-  # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1
-  ciMult <- qt(conf.interval/2 + .5, datac$N-1)
-  datac$ci <- datac$se * ciMult
-  
-  return(datac)
-}
+subSOA = mean(df$SOA)
+rangeSOA = range(df$SOA)
+
+
+# ANOVA time!
+
+### PERFORMANCE ###
+
+# anova comparing BLOCKED condition, 900 vs. 2000, only correct if RT b/w 200 and 700 ms
+
+lotp_4AFC_blocked_anova = ezANOVA(
+  data = filter(stat.df, Blocked == 1)
+  , dv = .(selRT)
+  , wid = .(SubID)
+  , within = .(TOA)
+  , detailed = FALSE
+)
+
+print(lotp_4AFC_blocked_anova)
+
+lotp_4AFC_blocked_anova_data_output = ezStats(
+  data = filter(stat.df, Blocked == 1)
+  , dv = .(selRT)
+  , wid = .(SubID)
+  , within = .(TOA)
+)
+
+
+# anova comparing MIXED condition, 900 vs. 2000, only correct if RT b/w 200 and 700 ms
+
+seq.stat.df <- filter(df, Blocked == 0) %>%
+  mutate(
+    seqTOA = lagpad(TOA,1), cor = Correct == 1 & !is.na(Correct), selRT = RT < .7 & RT > .2 & cor == 1) 
+
+seq.stat.df = filter(seq.stat.df, seqTOA >0)
+
+
+# factorize!
+
+seq.stat.df$SubID = factor(seq.stat.df$SubID)
+
+seq.stat.df$seqTOA = factor(seq.stat.df$seqTOA)
+
+class(seq.stat.df$seqTOA)
+
+# convert logical to numeric
+
+seq.stat.df$selRT = seq.stat.df$selRT + 0 
+
+lotp_4AFC_mixed_anova = ezANOVA(
+  data = seq.stat.df
+  , dv = .(selRT)
+  , wid = .(SubID)
+  , within = .(seqTOA)
+  , detailed = FALSE
+)
+
+print(lotp_4AFC_mixed_anova)
+
+lotp_4AFC_mixed_anova_data_output = ezStats(
+  data = seq.stat.df
+  , dv = .(selRT)
+  , wid = .(SubID)
+  , within = .(seqTOA)
+)
+
+
+
+### RT ###
+
+
+# BLOCKED
+
+lotp_4AFC_blocked_anova_RT = ezANOVA(
+  data = filter(stat.df, Blocked == 1, selRT == 1)
+  , dv = .(RT)
+  , wid = .(SubID)
+  , within = .(TOA)
+  , detailed = FALSE
+)
+
+print(lotp_4AFC_blocked_anova_RT)
+
+lotp_4AFC_blocked_anova_RT_data_output = ezStats(
+  data = filter(stat.df, Blocked == 1, selRT == 1)
+  , dv = .(RT)
+  , wid = .(SubID)
+  , within = .(TOA)
+)
+
+
+# MIXED
+
+
+lotp_4AFC_mixed_anova_RT = ezANOVA(
+  data = filter(seq.stat.df, Blocked == 0, selRT == 1)
+  , dv = .(RT)
+  , wid = .(SubID)
+  , within = .(seqTOA)
+  , detailed = FALSE
+)
+
+print(lotp_4AFC_mixed_anova_RT)
+
+lotp_4AFC_mixed_anova_RT_data_output = ezStats(
+  data = filter(seq.stat.df, Blocked == 0, selRT == 1)
+  , dv = .(RT)
+  , wid = .(SubID)
+  , within = .(seqTOA)
+)
+
+
+
+# 2x2 mixed/blocked anova:
+
+
+# need to combine seq.stat.df and normal blocked stat.df
+
+
+test.df = filter(stat.df, Blocked == 1)
+
+seqStat_statDf.df = bind_rows(test.df,seq.stat.df)
+
+stat.df$Blocked = factor(stat.df$Blocked)
+class(stat.df$Blocked)
+
+lotp_4AFC_blocked_mixed_anova_2x2 = ezANOVA(
+  data = stat.df
+  , dv = .(selRT)
+  , wid = .(SubID)
+  , within = .(TOA, Blocked)
+  , detailed = FALSE
+)
+
+print(lotp_4AFC_blocked_mixed_anova_2x2)
+
+lotp_4AFC_blocked_mixed_anova_2x2_data_output = ezStats(
+  data = stat.df
+  , dv = .(selRT)
+  , wid = .(SubID)
+  , within = .(TOA, Blocked)
+)
+
+
+
 
