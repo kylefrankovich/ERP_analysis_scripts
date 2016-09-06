@@ -24,6 +24,29 @@ head(df)
 
 length(unique(df$SubID))
 
+
+unique(df$SOA)
+
+
+# load separate dataframe with all blocked data:
+
+# need to add [1,5,6,7,8]
+
+df_blocked_only = read.table('LOTP_4AFC_ERP2_behavioral_data_blocked_only_subs.txt', 
+                             stringsAsFactor = FALSE, header = TRUE)
+
+
+
+length(unique(df_blocked_only$SubID))
+
+head(df_blocked_only)
+
+# append blocked only onto df
+
+
+df = bind_rows(df,df_blocked_only)
+
+
 # # find subject means
 # sub.mn <- df %>%
 #   group_by(TOA, Blocked, SubID) %>%
@@ -162,11 +185,12 @@ seq.grp.mn <- seq.sub.mn %>%
 
 ggplot(filter(sub.mn, Blocked == 1),
        aes(factor(TOA), acc.nor, fill = factor(TOA)))+ 
-  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
-  labs(x = 'TOA', y = 'Accuracy', title = 'Accuracy (Blocked)', fill = "TOA")+ 
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', 
+                                                          color = 'red')+
+  labs(x = 'TOA', y = 'Accuracy', title = '', fill = "TOA")+ 
   theme_bw(base_size = 20)
 
-ggsave(file = "LOTP_4AFC_ERP_blocked_performance.pdf", path = plot_path, width = 6, height = 7)
+ggsave(file = "dissertation_figure_4_1_blocked_perf.pdf", path = plot_path, width = 6, height = 7)
 
 
 # mixed: 
@@ -175,10 +199,10 @@ ggplot(filter(seq.sub.mn, seqTOA > 1),
        aes(factor(seqTOA), acc.nor, fill = factor(seqTOA)))+ 
   stat_summary(fun.y = mean, geom = 'bar')+ 
   stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
-  labs(x = 'TOA', y = 'Accuracy', title = 'Accuracy (Mixed)', fill = "TOA")+ 
+  labs(x = 'TOA', y = 'Accuracy', title = '', fill = "TOA")+ 
   theme_bw(base_size = 20)
 
-ggsave(file = "LOTP_4AFC_ERP_mixed_performance.pdf", path = plot_path, width = 6, height = 7)
+ggsave(file = "dissertation_figure_4_3_mixed_perf.pdf", path = plot_path, width = 6, height = 7)
 
 ## acc sequential
 
@@ -186,14 +210,17 @@ ggsave(file = "LOTP_4AFC_ERP_mixed_performance.pdf", path = plot_path, width = 6
 ggplot(filter(seq.sub.mn.Corr.Analysis, Blocked == 1),
        aes(factor(TOA), seqacc2, fill = factor(TOA))) + stat_summary(fun.y = mean, geom = 'bar')+ 
   stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
-  labs(x = 'TOA', y = 'Accuracy', title = 'Performance (Blocked), previous trial incorrect', fill = "TOA")+ 
+  labs(x = 'TOA', y = 'Accuracy', title = 'Performance (Blocked), 
+       previous trial incorrect', fill = "TOA")+ 
   theme_bw(base_size = 20)
 
 # previous trial correct
 ggplot(filter(seq.sub.mn.Corr.Analysis, Blocked == 1),
        aes(factor(TOA), seqacc3, fill = factor(TOA)))+ 
-  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
-  labs(x = 'TOA', y = 'Accuracy', title = 'Performance (Blocked), previous trial correct', fill = "TOA")+ 
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, 
+                                                          geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'Accuracy', title = 'Performance (Blocked), 
+       previous trial correct', fill = "TOA")+ 
   theme_bw(base_size = 20)
 
 
@@ -204,21 +231,23 @@ ggplot(filter(seq.sub.mn.Corr.Analysis, Blocked == 1),
 
 ggplot(filter(sub.mn, Blocked == 1),
        aes(factor(TOA), RT.nor, fill = factor(TOA)))+ 
-  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
-  labs(x = 'TOA', y = 'RT (ms)', title = "RT (Blocked)", fill = "TOA")+     
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, 
+                                                          geom = 'linerange', color = 'red')+
+  labs(x = 'TOA', y = 'RT (ms)', title = "", fill = "TOA")+     
   theme_bw(base_size = 20)
 
-ggsave(file = "LOTP_4AFC_mk2_blocked_rt.pdf", path = plot_path, width = 6, height = 7)
+ggsave(file = "dissertation_figure_4_2_blocked_rt.pdf", path = plot_path, width = 6, height = 7)
 
 # mixed:
 
 ggplot(filter(seq.sub.mn, seqTOA > 1),
        aes(factor(seqTOA), RT.nor, fill = factor(seqTOA)))+
-  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, geom = 'linerange', color = 'red')+
+  stat_summary(fun.y = mean, geom = 'bar') + stat_summary(fun.data = mean_sdl, 
+                                                          geom = 'linerange', color = 'red')+
   labs(x = 'TOA', y = 'RT (ms)', title = "RT (Mixed)", fill = "TOA")+     
   theme_bw(base_size = 20)
 
-ggsave(file = "LOTP_4AFC_mk2_mixed_rt.pdf", path = plot_path, width = 6, height = 7)
+ggsave(file = "dissertation_figure_4_4_mixed_rt.pdf", path = plot_path, width = 6, height = 7)
 
 
 
@@ -228,6 +257,7 @@ ggsave(file = "LOTP_4AFC_mk2_mixed_rt.pdf", path = plot_path, width = 6, height 
 
 #################
 
+library(ez)
 
 stat.df <- df %>%
   mutate(
@@ -285,7 +315,8 @@ lotp_4AFC_blocked_anova_data_output = ezStats(
 
 seq.stat.df <- filter(df, Blocked == 0) %>%
   mutate(
-    seqTOA = lagpad(TOA,1), cor = Correct == 1 & !is.na(Correct), selRT = RT < .7 & RT > .2 & cor == 1) 
+    seqTOA = lagpad(TOA,1), cor = Correct == 1 & !is.na(Correct), 
+    selRT = RT < .7 & RT > .2 & cor == 1) 
 
 seq.stat.df = filter(seq.stat.df, seqTOA >0)
 
